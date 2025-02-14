@@ -73,4 +73,4 @@ The Last Resort application is designed to streamline the final verification pro
 
 ## Contact
 
-For more information or if you encounter any issues, please contact Zdenek Lach. 
+For more information or if you encounter any issues, please contact Zdenek Lach.
