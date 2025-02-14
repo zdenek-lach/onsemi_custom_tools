@@ -1,0 +1,10 @@
+#!/bin/sh
+
+export LANG_PYTHON=3.12.6
+export PYTHONDONTWRITEBYTECODE=1
+export TOOL_HOME="/home/zbtffb/coding/last_resort/src"
+
+# pip install -r ${GSROOT}/pythonlib/last_resort_requirements.txt # uncomment before release
+pip install -r ${TOOL_HOME}/../last_resort_requirements.txt # testing
+clear
+/custom/tools/wrappers/lang/python $TOOL_HOME/last_resort.py $@

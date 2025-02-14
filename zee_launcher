@@ -1,0 +1,141 @@
+#!/usr/bin/env python
+import os
+import subprocess
+import sys
+from enum import Enum
+import shutil
+
+# Define the paths to your mini-programs and whether they need arguments
+programs = {
+    "Last Resort": {
+        "path": "secret/last_resort.py",
+        "accepts_argument": True,
+    },
+    "Alias Util": {
+        "path": "secret/alias_util",
+        "accepts_argument": False,
+    },
+    "Send Email V2": {
+        "path": "secret/send_email.py",
+        "accepts_argument": True,
+    },
+    "File Presenter": {
+        "path": "secret/file_presenter.py",
+        "accepts_argument": True,
+    },
+    "PO Parser": {
+        "path": "secret/po_parser.py",
+        "accepts_argument": True,
+    },
+    "Mebes Converter - released": {
+        "path": "secret/mebes_converter",
+        "accepts_argument": False,
+    },
+    "Mebes Converter - v2 (rc-1)": {
+        "path": "secret/mebes_converter.py",
+        "accepts_argument": False,
+    },
+    "Daps Trans Updater": {
+        "path": "secret/secret_tool_updater.py",
+        "accepts_argument": False,
+    },
+    "Quick-reload terminal": {
+        "path": "secret/reload_terminal",
+        "accepts_argument": False,
+    },
+    "Show help": {
+        "path": "",
+        "accepts_argument": False,
+    }
+}
+
+
+def display_help():
+    """Display the help message."""
+    help_message = """
+    Zee Launcher Help
+    =================
+    This script allows you to launch various mini-programs made by Zdenek Lach (Zee).
+
+    Usage:
+      - Run the script without arguments to display the menu and select a program to run.
+      - Use -h or --help to display this help message.
+      - Use -p or --paths to display the paths of all mini-programs.
+
+    Available Programs:
+    """
+    print(help_message)
+    for i, program in enumerate(programs.keys(), 1):
+        print(
+            f"  {i}) {program} (Needs argument: {programs[program]['accepts_argument']})")
+    print("\n")
+
+
+def display_menu():
+    """Display the menu of available mini-programs."""
+    print("\n" + "=" * 40)
+    print(" Zee's Launcher ".center(40, "="))
+    print("=" * 40)
+    for i, program in enumerate(programs.keys(), 1):
+        print(f"{i}) {program}")
+    print("=" * 40 + "\n")
+
+
+def run_program(choice):
+    """Run the selected program."""
+    program_name = list(programs.keys())[choice - 1]
+    program_info = programs[program_name]
+    program_path = program_info["path"]
+
+    if program_name == "Show help":
+        display_help()
+        input("Press any key to continue..")
+    elif program_info["accepts_argument"]:
+        arg = input(
+            f"Enter argument for {program_name} (or press Enter to skip): "
+        ).strip()
+        if arg:
+            print(f"Running {program_name} with argument '{arg}'...")
+            subprocess.run([program_path, arg])
+        else:
+            print(f"Running {program_name} without argument...")
+            subprocess.run([program_path])
+    else:
+        print(f"Running {program_name}...")
+        subprocess.run([program_path])
+
+
+def print_paths():
+    """Print the paths of all mini-programs."""
+    print("\nPaths of all mini-programs:")
+    for program_name, program_info in programs.items():
+        print(f"{program_name}: {program_info['path']}")
+    print("\n")
+
+
+def main():
+    """Main function to execute the script."""
+    while True:
+        display_menu()
+        selection = input(
+            "Select a program to run (enter the number, or 'q' to quit): "
+        ).strip()
+        if selection.lower() == "q":
+            print("Exiting...")
+            break
+        elif selection.isdigit() and 1 <= int(selection) <= len(programs):
+            run_program(int(selection))
+        else:
+            print("Invalid input! Please enter a number or 'q' to quit.")
+
+
+if __name__ == "__main__":
+    try:
+        if len(sys.argv) > 1 and sys.argv[1] in ("-h", "--help"):
+            display_help()
+        elif len(sys.argv) > 1 and sys.argv[1] in ("-p", "--paths"):
+            print_paths()
+        else:
+            main()
+    except KeyboardInterrupt:
+        print("\nApplication terminated!")
