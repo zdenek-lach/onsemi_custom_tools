@@ -141,13 +141,13 @@ Options:
 - `-run`: Start the conversion.
 - `-help, -h, --help, --h`: Display the help message.
 
-### Daps Trans Updater
+### DT update
 
-The Daps Trans Updater script updates DAPS transactions. It automates the process of updating transaction files.
+The DT update script updates the secret tool. 
 
 #### Usage
 
-Run the script to update DAPS transactions.
+Run the script to update secret transactions.
 
 ### Quick-reload Terminal
 
