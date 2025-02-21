@@ -34,7 +34,7 @@ def show_help():
     Usage: {script_name} [OPTION]
 
     This script converts mebes1 to mebes3 files using CATS. It is designed to work
-    universally across all secret environments. If launched outside the ONCR environment,
+    universally across all secret environments. If launched outside the secret environment,
     it allows the user to select a CATS version from a list of options.
 
     Options:
@@ -234,7 +234,7 @@ def show_main_menu():
     print("  |   This script converts mebes1 to mebes3 files using cats.   |")
     print("  |   It should work universally across                         |")
     print("  |   all secret environments and if launched                   |")
-    print("  |   outside ONCR env it allows the user                       |")
+    print("  |   outside secret env it allows the user                       |")
     print("  |   to select CATS version out of the list of options.        |")
     print("  +--+-------------------------------------------------------+--+")
     print("     |                                                       |   ")

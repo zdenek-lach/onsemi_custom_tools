@@ -26,7 +26,7 @@ class Person:
 
 
 # Create the dictionary with person details
-RDP_ONCR_TEAM_MEMBERS = {
+RDP_secret_TEAM_MEMBERS = {
     "user1": Person("First", "Last", "secret", "secret"),  #anonymized
     "user2": Person("First", "Last", "secret", "secret"),  #anonymized
     "user3": Person("First", "Last", "secret", "secret"),  #anonymized
@@ -40,7 +40,7 @@ def get_full_user_details(username):
     Get detailed information about a user.
 
     This function retrieves detailed information about a user from the system's
-    passwd entry and additional details from the RDP_ONCR_TEAM_MEMBERS dictionary.
+    passwd entry and additional details from the RDP_secret_TEAM_MEMBERS dictionary.
     It returns a dictionary containing the user's details, including username,
     encrypted password, user ID, group ID, full name, first name, last name,
     home directory, shell, phone number, and email address.
@@ -92,8 +92,8 @@ def get_full_user_details(username):
         home_directory = fields[5]  # Home directory
         shell = fields[6]  # User's login shell
 
-        # Extract the full name, first name, and last name from the RDP_ONCR_TEAM_MEMBERS dictionary
-        person = RDP_ONCR_TEAM_MEMBERS.get(username)
+        # Extract the full name, first name, and last name from the RDP_secret_TEAM_MEMBERS dictionary
+        person = RDP_secret_TEAM_MEMBERS.get(username)
         if person:
             full_name = f"{person.first_name} {person.last_name}"
             first_name = person.first_name
@@ -423,16 +423,16 @@ def get_cc_contacts(fab):
         >>> get_cc_contacts("secret")
         ['secret', 'secret', ..., 'secret']
     """
-    # Define the common RDP_ONCR contacts
+    # Define the common RDP_secret contacts
 
-    rdp_oncr_contacts = []
+    rdp_secret_contacts = []
 
-    # Use a for loop to append each email to the rdp_oncr_contacts list
-    for member in RDP_ONCR_TEAM_MEMBERS.values():
-        rdp_oncr_contacts.append(member.email)
+    # Use a for loop to append each email to the rdp_secret_contacts list
+    for member in RDP_secret_TEAM_MEMBERS.values():
+        rdp_secret_contacts.append(member.email)
 
     if fab == "secret1":
-        return rdp_oncr_contacts + [
+        return rdp_secret_contacts + [
             "secret",  #anonymized
             "secret",  #anonymized
             "secret",  #anonymized
@@ -442,7 +442,7 @@ def get_cc_contacts(fab):
             "secret",  #anonymized
         ]
     elif fab == "secret2":
-        return rdp_oncr_contacts + [
+        return rdp_secret_contacts + [
             "secret",  #anonymized
             "secret",  #anonymized
             "secret",  #anonymized

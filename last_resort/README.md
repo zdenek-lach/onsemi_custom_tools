@@ -43,9 +43,9 @@ The application supports a custom configuration file that can be specified using
 ```yaml
 final_mask_pattern: 'secret' # anonymized
 mask_name_pattern: 'secret' # anonymized
-mask_name_pattern_efk: 'secret' # anonymized
+mask_name_pattern_secret: 'secret' # anonymized
 revision_pattern: 'secret' # anonymized
-revision_pattern_efk: 'secret' # anonymized
+revision_pattern_secret: 'secret' # anonymized
 dataprep_pattern: 'secret' # anonymized
 editor_of_choice: 'built_in' # anonymized
 run_archive_path: 'secret/run_archive' # anonymized
